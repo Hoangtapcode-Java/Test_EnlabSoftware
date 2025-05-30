@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App UI with Timer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#1E2240] flex items-center justify-center min-h-screen text-white font-sans">
+
+<div class="w-full max-w-sm p-4">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Question <span class="text-gray-300">1/10</span></h2>
+        <div class="flex items-center space-x-2">
+            <span id="timer" class="text-sm bg-red-500 px-2 py-1 rounded">30s</span>
+            <button class="text-red-400 font-bold text-lg">✕</button>
+        </div>
+    </div>
+
+    <!-- Question -->
+    <p class="text-center text-xl font-medium mb-6">
+        In any programming language,<br/>
+        what is the most common way to<br/>
+        iterate through an array?
+    </p>
+
+    <!-- Options -->
+    <form class="space-y-4">
+        <label class="flex items-center p-3 bg-[#2C3156] rounded-lg hover:bg-[#3A3F6E] cursor-pointer">
+            <input type="radio" name="answer" class="form-radio text-indigo-600 mr-3" />
+            "For" loops
+        </label>
+
+        <label class="flex items-center p-3 bg-[#2C3156] rounded-lg hover:bg-[#3A3F6E] cursor-pointer">
+            <input type="radio" name="answer" class="form-radio text-indigo-600 mr-3" />
+            "If" Statements
+        </label>
+
+        <label class="flex items-center p-3 bg-[#2C3156] rounded-lg hover:bg-[#3A3F6E] cursor-pointer">
+            <input type="radio" name="answer" class="form-radio text-indigo-600 mr-3" />
+            "While" loops
+        </label>
+
+        <label class="flex items-center p-3 bg-[#2C3156] rounded-lg hover:bg-[#3A3F6E] cursor-pointer">
+            <input type="radio" name="answer" class="form-radio text-indigo-600 mr-3" />
+            "Do–while" loops
+        </label>
+
+        <!-- Button -->
+        <button type="submit" class="w-full mt-6 bg-gray-300 text-gray-800 font-bold py-2 rounded-lg hover:bg-gray-400">
+            Next
+        </button>
+    </form>
+</div>
+
+<script>
+    let timeLeft = 30; // seconds
+    const timerDisplay = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerDisplay.textContent = "Time's up!";
+            // TODO: Thêm hành động khi hết thời gian, ví dụ: disable form hoặc tự chọn đáp án
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
