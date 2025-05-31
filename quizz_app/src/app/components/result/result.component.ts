@@ -27,6 +27,7 @@ export class ResultComponent implements OnInit{
   }
 
   exit(){
+    localStorage.removeItem('email');
     this.router.navigateByUrl("/");
   }
   

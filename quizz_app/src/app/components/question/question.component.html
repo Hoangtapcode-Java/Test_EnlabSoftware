@@ -1,14 +1,13 @@
 <div class="quiz-container">
   <div class="quiz-box">
     <div class="quiz-header">
-      <h2>Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}</h2>
+      <h2>Question {{ currentQuestionIndex < questions.length ? currentQuestionIndex + 1 : questions.length }}/{{ questions.length }}</h2>
       <span class="timer">{{ timer }}s</span>
     </div>
 
     <p class="question-text">{{ currentQuestion?.question }}</p>
 
     <div class="options">
-      <!-- Nếu là câu hỏi chọn nhiều đáp án (checkbox style) -->
       <button class="select-answer"
         *ngFor="let answer of currentAnswers; let i = index"
         (click)="toggleAnswerSelection(answer.id!)"

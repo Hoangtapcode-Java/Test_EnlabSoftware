@@ -71,7 +71,7 @@ export class QuestionComponent implements OnInit {
   }
 
   selectSingleAnswer(answerId: number) {
-    this.selectedAnswers = [answerId]; // chỉ chọn một
+    this.selectedAnswers = [answerId];
   }
   
   // Chọn nhiều đáp án (checkbox)
@@ -79,14 +79,12 @@ export class QuestionComponent implements OnInit {
     const isMultipleChoice = this.currentQuestion?.options;
   
     if (isMultipleChoice) {
-      // Chọn nhiều => Toggle
       if (this.selectedAnswers.includes(answerId)) {
         this.selectedAnswers = this.selectedAnswers.filter(id => id !== answerId);
       } else {
         this.selectedAnswers.push(answerId);
       }
     } else {
-      // Chọn một => Chỉ giữ một đáp án
       this.selectedAnswers = [answerId];
     }
   }
@@ -128,7 +126,6 @@ export class QuestionComponent implements OnInit {
     if (this.currentQuestionIndex < this.questions.length) {
       this.loadCurrentQuestion();
     } else {
-      // Đã là câu cuối, thực hiện gọi addResult và chuyển hướng
       this.resultService.addResult(this.topicId!, localStorage.getItem('email')!).subscribe({
         next: (res) => {
           this.showResult = true;
