@@ -3,6 +3,7 @@ package org.example.quizz.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class UserAnswer {
@@ -11,18 +12,20 @@ public class UserAnswer {
     private Long id;
     @Column(name = "is_correct", columnDefinition = "BIT")
     private Boolean isCorrect;
-    @Column(columnDefinition = "DATETIME", name = "submitted_at")
-    private LocalDateTime summittedAt;
+    private Integer totalTime;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
     @JoinColumn(name = "questions_id")
     private Questions questions;
-    @ManyToOne
-    @JoinColumn(name = "answers_id")
-    private Answers answers;
-
+    @ManyToMany
+    @JoinTable(
+            name = "user_answer_selected",
+            joinColumns = @JoinColumn(name = "user_answer_id"),
+            inverseJoinColumns = @JoinColumn(name = "answer_id")
+    )
+    private List<Answers> answers;
     public UserAnswer() {
     }
 
@@ -42,12 +45,12 @@ public class UserAnswer {
         isCorrect = correct;
     }
 
-    public LocalDateTime getSummittedAt() {
-        return summittedAt;
+    public Integer getTotalTime() {
+        return totalTime;
     }
 
-    public void setSummittedAt(LocalDateTime summittedAt) {
-        this.summittedAt = summittedAt;
+    public void setTotalTime(Integer totalTime) {
+        this.totalTime = totalTime;
     }
 
     public User getUser() {
@@ -66,11 +69,11 @@ public class UserAnswer {
         this.questions = questions;
     }
 
-    public Answers getAnswers() {
+    public List<Answers> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Answers answers) {
+    public void setAnswers(List<Answers> answers) {
         this.answers = answers;
     }
 }

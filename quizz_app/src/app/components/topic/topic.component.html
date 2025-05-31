@@ -1,0 +1,26 @@
+<div class="start-container">
+    <div class="start-box">
+      <img src="/image.png" alt="Quiz Robot" class="robot-img" />
+      <h1>Welcome to the Quiz App</h1>
+  
+      <div class="topics-grid">
+        <div
+          *ngFor="let topic of topics"
+          class="topic-card"
+          [class.selected]="selectedTopicId === topic.id"
+          (click)="selectTopic(topic.id!)"
+        >
+          {{ topic.topicName }}
+        </div>
+      </div>
+  
+      <button
+        class="start-btn"
+        [disabled]="!selectedTopicId"
+        (click)="startQuizz()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  

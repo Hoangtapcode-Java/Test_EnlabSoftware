@@ -1,0 +1,16 @@
+<div class="start-container">
+    <div class="start-box">
+      <img src="/image.png" alt="Quiz Robot" class="robot-img" />
+      <h1>Welcome to the Quiz App</h1>
+      <form [formGroup]="userForm" (ngSubmit)="submit()" *ngIf="userForm">
+        <div class="form-group">
+            <input type="email" placeholder="Input your email" formControlName="email" />
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Input your user name" formControlName="userName" />
+        </div>
+        <button class="start-btn">Next</button>
+      </form>
+      
+    </div>
+  </div>

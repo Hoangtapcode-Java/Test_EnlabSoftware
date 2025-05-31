@@ -18,10 +18,10 @@ public class UserController {
     @PostMapping("/addUser")
     public ResponseEntity<?> addUser(@RequestBody User user) {
         if(userService.existEmail(user.getEmail())){
-            return new ResponseEntity<>(new ResponseMessage("Email đã tồn tại"), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new ResponseMessage("Email already exists"), HttpStatus.CONFLICT);
         }
         userService.addUser(user);
-        return new ResponseEntity<>(new ResponseMessage("Tạo tài khoản thành công"), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseMessage("Add new person successfully"), HttpStatus.OK);
     }
 
 

@@ -7,11 +7,11 @@ public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer total_time;
-    private Integer correct_answers;
+    private Integer totalTime;
+    private Integer correctAnswers;
     @Column(columnDefinition = "BIT")
     private Boolean statusPass;
-    private Integer total_questions;
+    private Integer totalQuestions;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -30,36 +30,36 @@ public class Result {
         this.id = id;
     }
 
-    public Integer getTotal_time() {
-        return total_time;
+    public Integer getTotalTime() {
+        return totalTime;
     }
 
-    public void setTotal_time(Integer total_time) {
-        this.total_time = total_time;
+    public void setTotalTime(Integer totalTime) {
+        this.totalTime = totalTime;
     }
 
-    public Integer getCorrect_answers() {
-        return correct_answers;
+    public Integer getCorrectAnswers() {
+        return correctAnswers;
     }
 
-    public void setCorrect_answers(Integer correct_answers) {
-        this.correct_answers = correct_answers;
+    public void setCorrectAnswers(Integer correctAnswers) {
+        this.correctAnswers = correctAnswers;
     }
 
-    public boolean isStatusPass() {
+    public Boolean getStatusPass() {
         return statusPass;
     }
 
-    public void setStatusPass(boolean statusPass) {
+    public void setStatusPass(Boolean statusPass) {
         this.statusPass = statusPass;
     }
 
-    public Integer getTotal_questions() {
-        return total_questions;
+    public Integer getTotalQuestions() {
+        return totalQuestions;
     }
 
-    public void setTotal_questions(Integer total_questions) {
-        this.total_questions = total_questions;
+    public void setTotalQuestions(Integer totalQuestions) {
+        this.totalQuestions = totalQuestions;
     }
 
     public User getUser() {

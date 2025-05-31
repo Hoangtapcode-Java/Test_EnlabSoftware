@@ -12,4 +12,6 @@ import java.util.List;
 public interface IAnswersRepo extends JpaRepository<Answers, Long> {
     @Query("select a from Answers as a where a.questions.id =:id")
     List<Answers> getAnswersByQuestionId(@Param("id") Long id);
+
+    List<Answers> findAllById(Long id);
 }
